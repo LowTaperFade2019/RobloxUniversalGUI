@@ -42,6 +42,17 @@ combatTitle.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 combatTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
 combatTitle.Parent = combatFrame
 
+userInputService.InputBegan:Connect(function(input, gameProcessed)
+    if gameProcessed then return end
+
+    if input.KeyCode == Enum.KeyCode.Z then
+        -- Toggle visibility
+        local newState = not movementFrame.Visible
+        movementFrame.Visible = newState
+        combatFrame.Visible = newState
+    end
+end)
+
 -- Create Buttons for Movement
 local flightButton = Instance.new("TextButton")
 flightButton.Size = UDim2.new(0, 180, 0, 40)
